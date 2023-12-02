@@ -9,8 +9,3 @@ else
     echo "Installing dependencies"
     npm install
 fi
-
-
-echo "Building project"
-
-npm run build

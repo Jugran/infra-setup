@@ -4,8 +4,6 @@ services:
   users: &api
     container_name: users
     image: node-alpine
-    init: true
-    tty: true
     restart: unless-stopped
     build: .
 
@@ -39,19 +37,6 @@ services:
       - ./products:/home/node/code
     ports:
       - 5000:3200
-
-  shell:
-    <<: *api
-    container_name: api-shell
-
-    ports:
-      - 5000:5000
-      - 9229:9229
-
-    profiles:
-      - shell
-
-    entrypoint: sh
 
   postgres:
     container_name: postgres
