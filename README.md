@@ -18,6 +18,7 @@ Individual service ports are also exposed to host machine.
 ```bash
 docker-compose up
 ```
+Services user, orders and products will start listening on ports `3000`, `4000` and `5000` respectively.
 
 #### Stop Containers
 Press `Ctrl + C` to stop the containers. Run `docker-compose down` to remove the containers.
@@ -29,6 +30,8 @@ Production envrioment includes dependencies in the docker image itself. And uses
 ```bash
 docker-compose -f docker-compose.prod.yml up -d
 ```
+
+Webserver will start listening on port `80` with traffic for services user, orders and products managed according to request url path `/users`, `/orders` and `/products` respectively.
 
 #### View Logs
 ```bash
