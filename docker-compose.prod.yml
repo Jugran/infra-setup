@@ -66,6 +66,9 @@ services:
 
     networks:
       - api-db
+    
+    volumes:
+      - ./postgres-data:/var/lib/postgresql
 
 networks:
   api-db:
