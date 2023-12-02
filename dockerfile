@@ -3,24 +3,26 @@ FROM node:18-alpine AS base
 USER node
 WORKDIR /home/node/code
 RUN chown -R node:node /home/node/code
-RUN npm install -g 
 
 
 # prod build with dependencies
 FROM base AS orders
 
-COPY ./orders .
+COPY ./orders/package*.json ./
 RUN npm ci
+COPY ./orders .
 RUN npm run build
 
 FROM base AS user
 
-COPY ./user .
+COPY ./user/package*.json ./
 RUN npm ci
+COPY ./user .
 RUN npm run build
 
 FROM base AS products
 
-COPY ./products .
+COPY ./products/package*.json ./
 RUN npm ci
+COPY ./products .
 RUN npm run build
